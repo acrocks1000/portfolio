@@ -1,103 +1,64 @@
+"use client";
+import GradientText from "@/components/ui/GradientText/gradientText";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { IUser } from "./model/user";
+import GlitchText from "@/components/ui/GlitchText/glitchText";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [profile, setProfile] = useState<IUser | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((res) => res.json())
+      .then((data) => setProfile(data));
+  }, []);
+
+  return (
+    <div className="flex text-white h-dvh">
+      <div className="grid grid-rows-[50px_minmax(50%,1fr)_minmax(40%,1fr)] md:grid-rows-[150px_minmax(275px,1fr)_minmax(400px,1fr)] w-dvw gap-4 m-4">
+        <div className="border-1 border-white">00</div>
+        <div className="grid md:grid-flow-col md:grid-rows-1 gap-4">
+          <div className="border-1 border-white">
+            <div className="flex flex-col h-full p-4">
+              <GlitchText
+                speed={3}
+                enableShadows={true}
+                enableOnHover={false}
+                className="custom-class"
+              >
+                {profile ? profile.name.toUpperCase() : "NAME"}
+              </GlitchText>
+              <div className="name"></div>
+              <GradientText
+                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                animationSpeed={3}
+                showBorder={false}
+                className="custom-class"
+              >
+                <span className="text-xl md:text-4xl">FRONT-END DEVELOPER</span>
+              </GradientText>
+            </div>
+          </div>
+          <div className="border-1 border-white row-span-3 md:row-span-full col-span-2">
+            02
+          </div>
+          <div className="border-1 border-white row-span-3 md:row-span-full">
+            03
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="grid md:grid-flow-col md:grid-rows-4 gap-4">
+          <div className="border-1 border-white md:row-span-2 md:row-start-2 md:row-end-5">
+            04
+          </div>
+          <div className="border-1 border-white md:row-span-3 md:row-end-4">
+            05
+          </div>
+          <div className="border-1 border-white md:row-start-2 md:row-end-5">
+            06
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
