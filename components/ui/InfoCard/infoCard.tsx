@@ -38,7 +38,7 @@ export function InfoCard() {
         </div>
         <div className="pl-6 text-sm md:text-base text-gray-200 font-mono whitespace-pre-wrap">
           {"{"}
-          <br />
+          <br /> 
           <span className={`inline-block pl-5`}>
             console.
             <span className="text-cyan-400 font-mono text-base">log</span>
@@ -48,7 +48,7 @@ export function InfoCard() {
                 randomWisdom ? "opacity-100" : "opacity-25"
               }`}
             >
-              {randomWisdom ? randomWisdom : "Loading...wait..."}
+              {randomWisdom ? randomWisdom : "Loading... wait..."}
             </span>
             ”)
           </span>

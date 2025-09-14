@@ -30,7 +30,7 @@ export function Navbar({ username }: { username: string }) {
         onDoubleClick={() => setOpen((prev) => !prev)}
       >
         <div className="flex w-full items-center justify-between mb-2">
-          <div className="flex gap-2 items-center text-[#ffffff9e]">
+          <div className="flex gap-2 items-center">
             <FaFeather />
             <ShinyText
               text={username}
@@ -58,7 +58,7 @@ export function Navbar({ username }: { username: string }) {
                                         flex-col
                                 "
             >
-              {["Projects", "Blogs", "Contact Me"].map(
+              {["Projects", "Blogs", "Contact Me", "About Me"].map(
                 (text, idx) => (
                   <div
                     key={idx}
