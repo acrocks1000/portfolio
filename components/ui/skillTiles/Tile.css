@@ -1,0 +1,16 @@
+
+.hex {
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  background: transparent;
+  border: 2px solid white; /* visible border follows bounding box but clip-path crops it */
+  transition: filter .18s, transform .18s;
+}
+.hex-inner { 
+  background: rgba(255,255,255,0.02); /* subtle fill */
+  color: white;
+  height:100%; width:100%;
+}
+.hex:hover {
+  filter: drop-shadow(0 0 14px rgba(99,102,241,0.9));
+  transform: translateY(-2px);
+}
