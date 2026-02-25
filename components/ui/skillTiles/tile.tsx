@@ -1,27 +1,32 @@
+'use client';
+import { FaAngular, FaReact } from "react-icons/fa";
+import { SiGit, SiGitlab, SiTypescript, SiJavascript, SiHtml5, SiCss3 } from "react-icons/si";
+
 export function Tile({ icon }: { icon: string }) {
+  function getIcon(target: string) {
+    const t = target.toLowerCase().trim();
+    if (t === "angular") {
+      return <FaAngular className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "react") {
+      return <FaReact className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "git") {
+      return <SiGit className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "gitlab") {
+      return <SiGitlab className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "typescript" || t === "ts") {
+      return <SiTypescript className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "js" || t === "javascript") {
+      return <SiJavascript className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "html" || t === "html5") {
+      return <SiHtml5 className="w-25 h-25 hover:fill-amber-500" />;
+    } else if (t === "css" || t === "css3") {
+      return <SiCss3 className="w-25 h-25 hover:fill-amber-500" />;
+    }
+    return null;
+  }
   return (
     <div>
-      <div className="tile w-30 h-30">
-        <svg viewBox="-15 -15 125 125" className="w-full h-full">
-          <polygon
-            points="50,3 93,25 93,75 50,97 7,75 7,25"
-            className=" stroke-white stroke-2 transition-[filter,stroke-width] duration-200"
-          />
-          <foreignObject x="15" y="20" width="70" height="60">
-            <div className="w-full h-full flex items-center justify-center text-sm text-white">
-              tile for {icon}
-            </div>
-          </foreignObject>
-        </svg>
-
-        <style jsx>{`
-          .tile:hover svg polygon {
-            filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.9))
-              drop-shadow(0 0 6px rgba(99, 102, 241, 0.55));
-            stroke-width: 2.5;
-          }
-        `}</style>
-      </div>
+      <div className="w-30 h-30">{getIcon(icon)}</div>
     </div>
   );
 }

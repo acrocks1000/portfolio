@@ -2,9 +2,16 @@ import { FaFeather } from "react-icons/fa";
 import ShinyText from "../ShinyText/shinyText";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { useState } from "react";
+import Link from "next/link";
 
 export function Navbar({ username }: { username: string }) {
   const [open, setOpen] = useState(false);
+
+  const navItems = [
+    { label: "Projects", href: "/projects" },
+    { label: "Blogs", href: "/blog" },
+    { label: "Contact Me", href: "/contact" },
+  ];
 
   return (
     <div className="navbar relative z-10">
@@ -15,14 +22,14 @@ export function Navbar({ username }: { username: string }) {
         />
       )}
       <div
-        className={`rounded-2xl m-auto items-center flex flex-col w-3/5 my-2 md:my-5 p-5 justify-between bg-white/20 backdrop-blur transition-all duration-300 overflow-hidden relative z-10
+        className={`m-auto items-center flex flex-col w-3/5 my-2 md:my-5 p-5 justify-between bg-white/20 backdrop-blur transition-all duration-300 overflow-hidden relative z-10
                     ${open ? "h-fit md:h-48 border-4" : "h-16 border"}
                                 `}
         style={
           open
             ? {
                 borderImage:
-                  "linear-gradient(90deg, #40ffaa, #4079ff, #40ffaa, #4079ff, #40ffaa) 1",
+                  "linear-gradient(90deg, #F2C447, #FF1D68, #F2C447, #FF1D68, #F2C447) 1",
                 borderStyle: "solid",
               }
             : { borderColor: "#e5e7eb", borderStyle: "solid" }
@@ -58,16 +65,16 @@ export function Navbar({ username }: { username: string }) {
                                         flex-col
                                 "
             >
-              {["Projects", "Blogs", "Contact Me"].map(
-                (text, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-gray-100 rounded shadow p-6 h-8 flex items-center justify-center flex-1 w-full md:w-auto transition-colors duration-200 hover:bg-gray-900 hover:text-white cursor-pointer"
-                  >
-                    {text}
-                  </div>
-                )
-              )}
+              {navItems.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="bg-gray-100 rounded shadow p-6 h-8 flex items-center justify-center flex-1 w-full md:w-auto transition-colors duration-200 hover:bg-gray-900 hover:text-white cursor-pointer"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         )}
