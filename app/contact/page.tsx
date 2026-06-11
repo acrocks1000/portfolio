@@ -150,17 +150,17 @@ export default function Contact() {
             <div className="p-6 border border-[#740580] border-opacity-30 rounded-lg bg-[#740580] bg-opacity-5 text-center">
               <div className="text-4xl mb-4">📧</div>
               <h3 className="text-xl font-bold mb-2 text-[#F2C447]">Email</h3>
-              <p className="text-gray-300">contact@example.com</p>
+              <p className="text-gray-300">abhinavchaudhary0002@gmail.com</p>
             </div>
             <div className="p-6 border border-[#740580] border-opacity-30 rounded-lg bg-[#740580] bg-opacity-5 text-center">
               <div className="text-4xl mb-4">💼</div>
               <h3 className="text-xl font-bold mb-2 text-[#F2C447]">LinkedIn</h3>
-              <p className="text-gray-300">linkedin.com/in/yourprofile</p>
+              <p className="text-gray-300">linkedin.com/in/acrocks1000</p>
             </div>
             <div className="p-6 border border-[#740580] border-opacity-30 rounded-lg bg-[#740580] bg-opacity-5 text-center">
-              <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-xl font-bold mb-2 text-[#F2C447]">Discord</h3>
-              <p className="text-gray-300">YourHandle#1234</p>
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-xl font-bold mb-2 text-[#F2C447]">GitHub</h3>
+              <p className="text-gray-300">github.com/acrocks1000</p>
             </div>
           </div>
         </div>
@@ -183,17 +183,17 @@ export default function Contact() {
             <div className="p-6 border-l-4 border-[#F2C447] bg-[#F2C447] bg-opacity-5">
               <h3 className="text-xl font-bold text-black mb-2">Available For</h3>
               <ul className="text-gray-300 space-y-2">
-                <li>✓ Freelance Projects</li>
                 <li>✓ Full-time Positions</li>
-                <li>✓ Collaborations</li>
+                <li>✓ Contract Projects</li>
+                <li>✓ Mentoring & Collaboration</li>
               </ul>
             </div>
             <div className="p-6 border-l-4 border-[#FF1D68] bg-[#FF1D68] bg-opacity-5">
               <h3 className="text-xl font-bold text-[#FF1D68] mb-2">Timezone</h3>
               <ul className="text-gray-300 space-y-2">
-                <li>🌍 EST (Eastern Standard Time)</li>
-                <li>📅 Monday - Friday, 9AM - 6PM</li>
-                <li>⏰ Quick response on weekends</li>
+                <li>🌍 IST (Indian Standard Time, UTC+5:30)</li>
+                <li>📅 Monday - Friday, 10AM - 7PM IST</li>
+                <li>⏰ Flexible for international clients</li>
               </ul>
             </div>
           </div>

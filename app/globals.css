@@ -1,26 +1,198 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sage: #9cb086;
+  --moss: #618764;
+  --pine: #2b5748;
+  --slate-deep: #273338;
+  --slate-darker: #1f292d;
+  --mist: #e9efe4;
+  --mist-soft: #b8c4b1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-sage: var(--sage);
+  --color-moss: var(--moss);
+  --color-pine: var(--pine);
+  --color-slate-deep: var(--slate-deep);
+  --color-slate-darker: var(--slate-darker);
+  --color-mist: var(--mist);
+  --color-mist-soft: var(--mist-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  /* background: var(--background); */
-  /* color: var(--foreground); */
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--slate-deep);
+  color: var(--mist);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--sage);
+  color: var(--slate-deep);
+}
+
+/* ---- scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- hero name letter stagger ---- */
+@keyframes letter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) rotate(6deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+.letter {
+  display: inline-block;
+  animation: letter-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---- marquee ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ---- blinking caret ---- */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* ---- ticker fade ---- */
+@keyframes ticker-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ticker-in {
+  animation: ticker-in 0.5s ease both;
+}
+
+/* ---- floating chip ---- */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.float-y {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+/* ---- glow border card ---- */
+.glow-card {
+  position: relative;
+  background: linear-gradient(
+    160deg,
+    rgba(43, 87, 72, 0.45),
+    rgba(39, 51, 56, 0.6)
+  );
+  border: 1px solid rgba(156, 176, 134, 0.14);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.glow-card:hover {
+  border-color: rgba(156, 176, 134, 0.45);
+  box-shadow: 0 0 0 1px rgba(156, 176, 134, 0.2),
+    0 18px 50px -18px rgba(156, 176, 134, 0.35);
+}
+
+/* ---- section heading underline draw ---- */
+.heading-line {
+  position: relative;
+  display: inline-block;
+}
+.heading-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  height: 0.08em;
+  width: 100%;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.is-visible .heading-line::after {
+  transform: scaleX(1);
+}
+
+/* ---- cursor glow ---- */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  margin-left: -240px;
+  margin-top: -240px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(
+    circle,
+    rgba(156, 176, 134, 0.07) 0%,
+    rgba(97, 135, 100, 0.04) 35%,
+    transparent 70%
+  );
+  transition: opacity 0.3s;
+}
+
+/* ---- noise grain ---- */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
 }

@@ -1,6 +1,6 @@
 'use client';
 import { FaAngular, FaReact } from "react-icons/fa";
-import { SiGit, SiGitlab, SiTypescript, SiJavascript, SiHtml5, SiCss3 } from "react-icons/si";
+import { SiGit, SiGitlab, SiTypescript, SiJavascript, SiHtml5, SiCss } from "react-icons/si";
 
 export function Tile({ icon }: { icon: string }) {
   function getIcon(target: string) {
@@ -20,7 +20,7 @@ export function Tile({ icon }: { icon: string }) {
     } else if (t === "html" || t === "html5") {
       return <SiHtml5 className="w-25 h-25 hover:fill-amber-500" />;
     } else if (t === "css" || t === "css3") {
-      return <SiCss3 className="w-25 h-25 hover:fill-amber-500" />;
+      return <SiCss className="w-25 h-25 hover:fill-amber-500" />;
     }
     return null;
   }

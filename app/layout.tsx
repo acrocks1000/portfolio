@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,9 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Abhinav's Portfolio",
-  description: "Abhinav's portfolio webapp",
+  title: "Abhinav Chaudhary — Senior Frontend Engineer",
+  description:
+    "Senior Frontend Engineer building fast, accessible, enterprise-grade web apps with Angular, React, and TypeScript.",
 };
 
 export default function RootLayout({
@@ -25,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-900`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
         {children}
       </body>
